@@ -1,0 +1,135 @@
+@mixin img-container($maxWidth:350px) {
+  display  : block;
+  position : relative;
+  padding  : 10px;
+  //#{$property}: $rtl-value;
+  img {
+    display   : block;
+    height    : auto;
+    width     : 100%;
+    max-width : $maxWidth;
+    margin    : 1rem auto;
+  }
+}
+
+.product-list {
+  display   : flex;
+  flex-wrap : wrap;
+
+  .card {
+    margin     : 1rem;
+    width      : 320px;
+    //height  : 400px;
+    display    : block;
+    transition : all 0.1s linear;
+
+    .img-container {
+      position : relative;
+      overflow : hidden;
+      height   : 200px;
+      //max-width: 250px;
+      padding  : 10px;
+
+      img {
+        display    : block;
+        height     : 150px;
+        width      : auto;
+        margin     : 1rem auto;
+        transition : all 0.15s linear;
+      }
+
+    }
+
+    .cardbtn {
+      display          : block;
+      position         : absolute;
+      //background-color : #6f7d7e;
+      outline          : none;
+      border           : none;
+      right            : 0;
+      bottom           : 0;
+      padding          : 0.2rem 0.4rem;
+      background-color : #babcbf;
+      color            : #e5e8e8;
+      font-size        : 1.4rem;
+      border-radius    : 0.18rem 0 0 0;
+      transform        : translate(100%, 100%);
+      transition       : all 0.15s linear;
+    }
+
+    .card-footer {
+      transition : all 0.1s linear;
+      height     : 120px;
+    }
+
+    &:hover, &:active, &:focus {
+      border     : 0.04rem solid rgba(0, 0, 0, 0.2);
+      box-shadow : 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+
+      .card-footer {
+        background-color : rgb(247, 247, 247);
+      }
+
+      img {
+        transform : scale(1.2);
+      }
+
+      .cardbtn {
+        transform : translate(0, 0);
+      }
+    }
+
+
+  }
+}
+
+.detail-view {
+  position  : relative;
+  display   : flex;
+  flex-wrap : wrap;
+
+  * {
+    flex : auto;
+  }
+
+  .img-container {
+    @include img-container(350px)
+  }
+
+  .info {
+    max-width : 500px;
+  }
+}
+
+.modal-container {
+  position         : fixed;
+  display          : flex;
+  top              : 0;
+  left             : 0;
+  right            : 0;
+  bottom           : 0;
+  background-color : rgba(0, 0, 0, 0.3);
+
+  .product-modal {
+
+    display          : block;
+    max-width        : 400px;
+    margin           : auto;
+    background-color : white;
+    padding          : 10px;
+
+    * {
+      text-align : center;
+      margin-top : 5px;
+    }
+
+    .img-container {
+      @include img-container(100px)
+    }
+
+    a {
+      display : block;
+    }
+
+  }
+}
