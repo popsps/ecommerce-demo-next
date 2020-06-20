@@ -94,7 +94,7 @@ export const storeProducts = [
   {
     id: 5,
     title: "Galaxy S10+ 128GB (Unlocked)",
-    img: "img/Galaxy S10+ 128GB (Unlocked).webp",
+    img: "img/Galaxy S10.webp",
     listPrice: 849.99,
     price: 649.99,
     company: "SAMSUNG",
