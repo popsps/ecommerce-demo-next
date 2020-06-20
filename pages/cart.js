@@ -12,7 +12,6 @@ const Cart = () => {
       <p>Your cart is empty</p>
     </div>
   );
-  console.log('---NEXT_PUBLIC_PAYPAL_ID:', process.env.NEXT_PUBLIC_PAYPAL_ID)
   if (cart.length > 0) {
     cartDisplay = (
       <div className='text-center'>
