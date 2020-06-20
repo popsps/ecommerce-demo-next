@@ -1,4 +1,4 @@
-// import "../styles/main.css"
+import "../styles/main.css"
 import {ProductProvider} from "../productContext";
 import React from "react";
 
