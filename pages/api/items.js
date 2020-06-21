@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 let message = process.env.MONGO_KEY
+let error = ''
 console.log('feefe')
 const mongoURI = process.env.MONGO_KEY
 mongoose.connect(mongoURI, {
@@ -11,9 +12,13 @@ mongoose.connect(mongoURI, {
 })
   .then(() => {
     console.log('mongo db connected')
-    message = 'mongo db connected'
+    message += ' mongo db connected'
   })
-  .catch(err => console.log("error connection"))
+  .catch(err => {
+    message += ' error connection'
+    error = err
+    console.log(" error connection")
+  })
 // const mongoConnection = await mongoose.createConnection(mongoURI)
 
 const ProductSchema = new Schema({
@@ -44,7 +49,7 @@ export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
 
-    res.json({val: 12323, message: message})
+    res.json({val: 12323, message: message, error})
 
   } catch (err) {
     console.log('something went wrong...')
