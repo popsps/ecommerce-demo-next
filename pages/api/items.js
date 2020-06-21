@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+let message = ''
 console.log('feefe')
 const mongoURI = process.env.MONGO_KEY
 mongoose.connect(mongoURI, {
@@ -8,7 +9,10 @@ mongoose.connect(mongoURI, {
   useUnifiedTopology: true,
   useFindAndModify: false
 })
-  .then(() => console.log('mongo db connected'))
+  .then(() => {
+    console.log('mongo db connected');
+    message = 'mongo db connected'
+  })
   .catch(err => console.log("error connection"))
 // const mongoConnection = await mongoose.createConnection(mongoURI)
 
@@ -40,7 +44,7 @@ export default (req, res) => {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
 
-    res.json({val: 12323})
+    res.json({val: 12323, message: message})
 
   } catch (err) {
     console.log('something went wrong...')
