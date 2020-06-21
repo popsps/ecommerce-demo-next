@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-let message = ''
+let message = process.env.MONGO_KEY
 console.log('feefe')
 const mongoURI = process.env.MONGO_KEY
 mongoose.connect(mongoURI, {
