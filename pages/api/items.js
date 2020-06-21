@@ -19,7 +19,7 @@ mongoose.connect(mongoURI, {
     error = err
     console.log(" error connection")
   })
-// const mongoConnection = await mongoose.createConnection(mongoURI)
+
 
 const ProductSchema = new Schema({
   title: {
@@ -37,6 +37,17 @@ let Product
 
 
 export default (req, res) => {
+  try{
+    const mongoConnection = await mongoose.createConnection(mongoURI)
+    console.log('mongoConnection')
+    message += ' mongoConnection'
+  }
+  catch (err) {
+    console.log('error mongoConnection')
+    message += ' error mongoConnection'
+
+  }
+
   // try {
   //   Product = mongoose.model('product')
   //   console.log('already in')
