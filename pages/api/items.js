@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
-let message = process.env.MONGO_KEY
+let message = "init"
 let error = ''
 console.log('feefe')
 const mongoURI = process.env.MONGO_KEY
@@ -36,7 +36,7 @@ const ProductSchema = new Schema({
 let Product
 
 
-export default (req, res) => {
+export default async (req, res) => {
   try{
     const mongoConnection = await mongoose.createConnection(mongoURI)
     console.log('mongoConnection')
