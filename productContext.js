@@ -12,7 +12,8 @@ export class ProductProvider extends Component {
     item: undefined,
     cartSubTotal: 0,
     cartTax: 0,
-    cartTotal: 0
+    cartTotal: 0,
+    cartCount: 0
   }
 
   componentDidMount() {
@@ -58,6 +59,8 @@ export class ProductProvider extends Component {
     console.log('clear cart')
   }
 
+
+
   render() {
     return (
       <ProductContext.Provider value={
@@ -68,7 +71,6 @@ export class ProductProvider extends Component {
           clearCart: this.clearCart,
           openModal: this.openModal,
           closeModal: this.closeModal
-
         }}>
         {this.props.children}
       </ProductContext.Provider>
