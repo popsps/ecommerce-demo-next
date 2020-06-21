@@ -10,7 +10,7 @@ mongoose.connect(mongoURI, {
   useFindAndModify: false
 })
   .then(() => {
-    console.log('mongo db connected');
+    console.log('mongo db connected')
     message = 'mongo db connected'
   })
   .catch(err => console.log("error connection"))
