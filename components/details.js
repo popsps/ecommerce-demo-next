@@ -8,7 +8,7 @@ class Details extends Component {
   state = {
     product: undefined
   }
-  
+
 
   render() {
     const {products, addToCart, openModal} = this.context
@@ -31,7 +31,7 @@ class Details extends Component {
               <Link to='/'>
                 <button className='mr-2'>Back To Products</button>
               </Link>
-              <button className='ml-2'
+              <button className='btn btn-info ml-2 my-5'
                       onClick={() => {
                         addToCart(product.id)
                         openModal(product.id)

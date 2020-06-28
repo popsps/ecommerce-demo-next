@@ -2,7 +2,7 @@ export const storeProducts = [
   {
     id: 1,
     title: "Google - Pixel 3a with 64GB Memory Cell Phone (Unlocked) - Just Black - G020G",
-    img: "img/Google - Pixel 3a with 64GB Memory Cell Phone (Unlocked) - Just Black - G020G.jpg",
+    image: "img/Google - Pixel 3a with 64GB Memory Cell Phone (Unlocked) - Just Black - G020G.jpg",
     listPrice: 399.00,
     price: 337.97,
     company: "GOOGLE",
@@ -19,7 +19,7 @@ export const storeProducts = [
   {
     id: 2,
     title: "Samsung S7",
-    img: "img/Samsung S7.png",
+    image: "img/Samsung S7.png",
     listPrice: 399.00,
     price: 169.99,
     company: "SAMSUNG",
@@ -36,7 +36,7 @@ export const storeProducts = [
   {
     id: 3,
     title: "iPhone XS Max 64GB - Gold (Unlocked)",
-    img: "img/iPhone XS Max 64GB - Gold (Unlocked).jpg",
+    image: "img/iPhone XS Max 64GB - Gold (Unlocked).jpg",
     listPrice: 598.99,
     price: 598.99,
     company: "Apple",
@@ -81,7 +81,7 @@ export const storeProducts = [
   {
     id: 4,
     title: "HTC 10 - White",
-    img: "img/HTC 10 - White.png",
+    image: "img/HTC 10 - White.png",
     listPrice: 179.99,
     price: 179.99,
     company: "htc",
@@ -94,7 +94,7 @@ export const storeProducts = [
   {
     id: 5,
     title: "Galaxy S10+ 128GB (Unlocked)",
-    img: "img/Galaxy S10.webp",
+    image: "img/Galaxy S10.webp",
     listPrice: 849.99,
     price: 649.99,
     company: "SAMSUNG",
@@ -113,7 +113,7 @@ export const storeProducts = [
   {
     id: 6,
     title: "Huawei Mate 20 Pro LYA-L29 128GB + 6GB - Factory Unlocked International Version - GSM ONLY, NO CDMA - No Warranty in The USA (Emerald Green)",
-    img: "img/Huawei Mate 20 Pro LYA-L29 128GB.jpg",
+    image: "img/Huawei Mate 20 Pro LYA-L29 128GB.jpg",
     listPrice: 472.00,
     price: 472.00,
     company: "Huawei",
@@ -125,7 +125,7 @@ export const storeProducts = [
   {
     id: 7,
     title: "Iphone 7",
-    img: "img/Iphone 7.png",
+    image: "img/Iphone 7.png",
     listPrice: 349.99,
     price: 349.99,
     company: "apple",

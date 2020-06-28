@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import ProductContext from "../productContext";
-import {Link} from "react-router-dom";
+import {Link} from "next";
 
 const Modal = ({}) => {
   const context = useContext(ProductContext)
@@ -18,10 +18,12 @@ const Modal = ({}) => {
             <span>$ </span>{item.price}
           </p>
           <div>
-            <Link to='/'>
-              <button onClick={() => closeModal()}>
-                Continue Shopping
-              </button>
+            <Link href='/'>
+              <a>
+                <button onClick={() => closeModal()}>
+                  Continue Shopping
+                </button>
+              </a>
             </Link>
           </div>
           <Link to='/cart' onClick={() => closeModal()}>

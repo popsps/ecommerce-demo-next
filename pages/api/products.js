@@ -24,16 +24,6 @@ const ProductSchema = new Schema({
   }
 })
 
-// const ProductSchema = {
-//   title: {
-//     type: String,
-//     required: true
-//   },
-//   date: {
-//     type: Date,
-//     default: Date.now
-//   }
-// }
 
 let Product
 
@@ -63,6 +53,12 @@ export default (req, res) => {
 
     // Product.findById('5eef6e06583f080815e1a972')
     //   .then(item => res.json(item))
+
+    // const newProduct = new Product({
+    //   title: req.body.title
+    // })
+    // newProduct.save()
+    //   .then(product => res.json(product))
   } catch (err) {
     console.log('something went wrong...')
     res.statusCode = 404
