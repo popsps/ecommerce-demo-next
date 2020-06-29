@@ -1,36 +1,28 @@
-import React, {useContext} from 'react';
-import ProductContext from "../productContext";
+import React, {useContext, useState} from 'react';
 import {Link} from "next";
 
 const Modal = ({}) => {
-  const context = useContext(ProductContext)
-  const {item, openModal, closeModal, modalOpen} = context
-  if (modalOpen && item) {
+  // const {item, openModal, closeModal, modalOpen} = context
+  const [isOpen] = useState(false)
+  if (isOpen) {
     return (
-      <div className='modal-container'>
-        <div className='product-modal'>
-          <p className='text-center text-wrap'>modal</p>
-          <div className='img-container'>
-            <img src={item.img} alt='product'/>
+      <div className="modal" id='myModal'>
+        <div className="modal-dialog" role="document">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h5 className="modal-title">Modal title</h5>
+              <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div className="modal-body">
+              <p>Modal body text goes here.</p>
+            </div>
+            <div className="modal-footer">
+              <button type="button" className="btn btn-primary">Save changes</button>
+              <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
           </div>
-          <p className='text-center text-wrap'>{item.title}</p>
-          <p className='text-center text-wrap'>
-            <span>$ </span>{item.price}
-          </p>
-          <div>
-            <Link href='/'>
-              <a>
-                <button onClick={() => closeModal()}>
-                  Continue Shopping
-                </button>
-              </a>
-            </Link>
-          </div>
-          <Link to='/cart' onClick={() => closeModal()}>
-            <button>
-              Go To Cart
-            </button>
-          </Link>
         </div>
       </div>
     )

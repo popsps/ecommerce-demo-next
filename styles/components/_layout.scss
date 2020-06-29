@@ -239,3 +239,61 @@
 .w-50 {
   width : 50px !important;
 }
+
+.push-menu {
+  background-color : #7997b5;
+  position         : fixed;
+  display          : flex;
+  top              : 0;
+  right            : 0;
+  bottom           : 0;
+  left             : 0;
+  z-index          : 1000;
+
+  background-color : rgba(0, 0, 0, 0.3);
+
+  .menu {
+    position         : relative;
+    display          : flex;
+    margin-left      : auto;
+    width            : 650px;
+    //width            : 0;
+    right            : 0;
+    background-color : white;
+    transition       : all 0.3s ease-out;
+
+    .cart {
+      margin-left : 80px;
+      margin-top  : 20px;
+      padding     : 10px;
+      flex        : 1;
+
+      .btn {
+        margin-top    : 10px;
+        padding-left  : 75px;
+        padding-right : 75px;
+      }
+    }
+  }
+}
+
+.close-btn {
+  font-size  : 45px;
+  color      : #18BC9C;
+  cursor     : pointer;
+  transition : color 0.3s linear;
+
+  &:hover, &:focus, &:active {
+    color : darken(#18BC9C, 15%);
+  }
+}
+
+.collapsed {
+  transition : all 1.3s ease-out;
+  width      : 0 !important;
+}
+
+.menu-open {
+  transition : all 1.3s ease-out;
+  width      : 650px !important;
+}
