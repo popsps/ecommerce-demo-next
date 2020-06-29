@@ -38,6 +38,7 @@ const Product = ({phoneData}) => {
               {phoneData.title}
             </h5>
             <p><span>$</span>{price}</p>
+            <p>{`stock: ${stock}`}</p>
             <div dangerouslySetInnerHTML={{__html: phoneData.contentHtml}}/>
             <div className='d-flex justify-content-between'>
               <Link href='/'>

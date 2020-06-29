@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import PayPalButton from "../components/payPalButton";
 import Layout from "../components/layout";
-import {getMyShoppingCart} from "../utils/cart";
+import {getMyShoppingCart, getMyShoppingCartInfo, increment, decrement} from "../utils/cart";
+
+const {clearCart} = require("../utils/cart");
 
 const Cart = () => {
   // cartTotal, cartSubTotal, cartCount, clearCart, addToCart
   const [cart, setCart] = useState([])
-  const cartCount = 0
-  const cartSubTotal = 0
+  const [count, setCount] = useState(0)
+  const [subtotal, setSubtotal] = useState(0)
 
   let cartDisplay = (
     <div className='cart-container'>
@@ -17,15 +19,36 @@ const Cart = () => {
     </div>
   );
   useEffect((() => {
-    const _cart = getMyShoppingCart()
-    setCart(_cart)
+    const cartInfo = getMyShoppingCartInfo()
+    console.log("cartinfo:", cartInfo)
+    // const _cart = getMyShoppingCart()
+    setCart(cartInfo.myCart)
+    setCount(cartInfo.count)
+    setSubtotal(cartInfo.subTotal)
   }), [])
 
   if (cart.length > 0) {
     cartDisplay = (
       <div className='cart-container'>
         <div className='cart-products'>
+          <button className='btn btn-info' onClick={() => {
+            const submitPurchase = async () => {
 
+              const myCart = cart.map((p, i) => {
+                return {_id: p.id, title: p.title, qty: p.qty}
+              })
+              const res = await fetch('/api/submitPurchase'
+                , {
+                  method: 'POST',
+                  body: JSON.stringify(myCart)
+                })
+            };
+            submitPurchase();
+            clearCart()
+            const _cart = getMyShoppingCart()
+            setCart(_cart)
+          }}>submit
+          </button>
           <div className='product header'>
             <div className='product-row'>
               <div className='title'>
@@ -50,9 +73,27 @@ const Cart = () => {
                 </div>
               </div>
               <div className='my-2'>
-                <button type="button" className="btn btn-outline-danger w-50 mr-1">-</button>
+                <button type="button" className="btn btn-outline-danger w-50 mr-1"
+                        onClick={() => {
+                          decrement(item.id)
+                          const _cart = getMyShoppingCartInfo()
+                          setCart(_cart.myCart)
+                          setSubtotal(_cart.subTotal)
+                          setCount(_cart.count)
+                        }}>
+                  -
+                </button>
                 <div id='qty' className="w-50 mr-1">{item.qty}</div>
-                <button type="button" className="btn btn-outline-info w-50">+</button>
+                <button type="button" className="btn btn-outline-info w-50"
+                        onClick={() => {
+                          increment(item.id)
+                          const _cart = getMyShoppingCartInfo()
+                          setCart(_cart.myCart)
+                          setSubtotal(_cart.subTotal)
+                          setCount(_cart.count)
+                        }}>
+                  +
+                </button>
 
               </div>
             </div>
@@ -63,7 +104,7 @@ const Cart = () => {
             <div className="card-header">Proceed to Checkout</div>
             <div className="card-body">
               <p className="card-text">
-                {`Subtotal (${cartCount}) items:$${cartSubTotal}`}
+                {`Subtotal (${count}) items:$${subtotal}`}
               </p>
               <PayPalButton/>
             </div>

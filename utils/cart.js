@@ -46,21 +46,65 @@ const getMyShoppingCart = () => {
 }
 
 const removeFromCart = id => {
-  const tempProducts = this.state.products
-  tempProducts[id - 1].inCart = false
-  const newCart = this.state.cart.filter((item, index) => item.id !== id)
-  this.setState(() => ({products: tempProducts, cart: newCart}))
+  try {
+    let myCart = JSON.parse(localStorage.getItem("myCart"))
+    myCart = myCart.filter(item => item.id !== id)
+    localStorage.setItem("myCart", JSON.stringify(myCart))
+  } catch (e) {
+    console.log("something went wrong...")
+  }
 }
-const increment = (id) => {
+const increment = id => {
+  const myCart = JSON.parse(localStorage.getItem("myCart"))
+  const _product = myCart.filter(p => p.id === id)[0]
+  if (_product) {
+    _product.qty += 1
+  }
+  localStorage.setItem("myCart", JSON.stringify(myCart))
   console.log('increment')
 }
 const decrement = (id) => {
+  const myCart = JSON.parse(localStorage.getItem("myCart"))
+  const _product = myCart.filter(p => p.id === id)[0]
+  if (_product) {
+    if (_product.qty > 1) {
+      _product.qty -= 1
+      localStorage.setItem("myCart", JSON.stringify(myCart))
+    } else
+      removeFromCart(id)
+  }
   console.log('decrement')
 }
 const clearCart = () => {
+  localStorage.removeItem('myCart')
   console.log('clear cart')
 }
+
+const addToSubTotal = id => {
+
+}
+const removeFromSubTotal = id => {
+
+}
+
+const getMyShoppingCartInfo = () => {
+  try {
+    const myCart = JSON.parse(localStorage.getItem("myCart"))
+    console.log("get my cart:", myCart)
+    if (myCart) {
+      const subTotal = myCart.reduce((p, c) => Math.round((p + c.price * c.qty) * 100) / 100, 0)
+      const count = myCart.reduce((p, c) => p + c.qty, 0)
+      console.log('subtotal:', subTotal)
+      return {myCart: myCart, count: count, subTotal: subTotal}
+    } else
+      return {myCart: [], count: 0, subTotal: 0}
+  } catch (e) {
+    console.log("something went wrong...")
+    return {myCart: [], count: 0, subTotal: 0}
+  }
+}
+
 module.exports = {
-  addToCart, getMyShoppingCart,
+  addToCart, getMyShoppingCart, getMyShoppingCartInfo,
   removeFromCart, increment, decrement, clearCart
 }

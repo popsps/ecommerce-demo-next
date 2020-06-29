@@ -54,12 +54,24 @@ export default (req, res) => {
   try {
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
-    const {_id, title} = JSON.parse(req.body)
-    console.log("id:", _id, "title:", title)
-    Product.findById(_id)
-      .then((myPhone) => {
-        res.json({price: myPhone.price, stock: myPhone.stock})
-      })
+    const items = JSON.parse(req.body)
+    console.log("items", items)
+    // console.log("id:", _id, "title:", title)
+    // Product.findById(_id)
+    //   .then((myPhone) => {
+    //     res.json({price: myPhone.price, stock: myPhone.stock})
+    //   })
+    items.forEach(item => {
+      const ns = item.stock - item.qty
+      Product.findOne({"_id": item._id, 'title': item.title}
+        , (err, prevItem) => {
+          prevItem.stock -= item.qty
+          prevItem.save()
+          console.log('updated', prevItem.title)
+
+        })
+    })
+
 
   } catch (err) {
     console.log('something went wrong...')
