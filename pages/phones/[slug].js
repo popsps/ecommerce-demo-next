@@ -70,8 +70,11 @@ const Product = ({phoneData}) => {
           </div>
         </article>
       </Layout>
-      <PushMenu isOpen={pushMenuOpen} count={count} subtotal={subtotal}
-                onClose={() => togglePushMenu()}/>
+      <PushMenu isOpen={pushMenuOpen}
+                count={count} subtotal={subtotal}
+                onClose={() => {
+                  setPushMenuOpen(false)
+                }}/>
     </>
 
   );

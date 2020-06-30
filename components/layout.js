@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Navigation from "./navigation";
+import React from "react";
 
 const Layout = (props) => {
   return (
