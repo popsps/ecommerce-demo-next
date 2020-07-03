@@ -297,3 +297,10 @@
   transition : all 1.3s ease-out;
   width      : 650px !important;
 }
+
+
+@media screen and (max-width : 1000px) {
+  .nav-link {
+    padding : 7.5px 0;
+  }
+}
